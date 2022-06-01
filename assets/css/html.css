@@ -1,42 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
+  width: 1200px;
+  margin: auto;
+}
+body header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #666666;
+  color: #fff;
+}
+body .main {
+  display: flex;
+}
+body .main .left {
+  padding: 60px 80px;
+  flex: 1;
+  background-color: #cccccc;
+}
+body .main .left ul {
+  list-style: none;
+}
+body .main .left ul a {
+  color: blue;
+}
+body .main .right {
+  padding: 60px 80px;
+  flex: 3;
+  background-color: #f1f1f1;
+}
+body .main .right div + div {
+  margin-top: 30px;
+}
+body footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #777777;
+  color: #fff;
 }
 
-header {
-    background-color: rgb(129, 124, 124);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.main {
-    display: flex;
-}
-
-.left {
-    flex: 1;
-    background-color: rgb(167, 164, 164);
-}
-
-.right {
-    flex: 4;
-    padding: 20px;
-}
-
-.right div+div {
-    margin-bottom: 20px;
-}
-
-ul {
-    list-style: none;
-}
-
-footer {
-    background-color: rgb(101, 99, 99);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+/*# sourceMappingURL=html.css.map */
