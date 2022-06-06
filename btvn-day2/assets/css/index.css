@@ -1,21 +1,94 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
+body input[type=text] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4px 0px;
+}
 body .form-input {
+  width: 1000px;
   background-color: #f5f5dd;
   padding: 20px;
 }
-body div {
-  margin: 8px 0px;
+body .form-input .form1 {
+  display: flex;
+  justify-content: space-between;
+}
+body .form-input .form1 .email,
+body .form-input .form1 .password {
+  width: 50%;
+}
+body .form-input .form1 .email {
+  margin-right: 4px;
+}
+body .form-input .form1 .password {
+  margin-left: 4px;
+}
+body .form-input .form2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .form-input .form2 .city {
+  width: 50%;
+}
+body .form-input .form2 .state {
+  width: 30%;
+  margin: 0px 8px;
+}
+body .form-input .form2 .state select {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4px 0px;
+}
+body .form-input .form2 .zip {
+  width: 20%;
+}
+body .form-input button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #0079fa;
+  color: #fff;
+  border-radius: 4px;
+}
+body .form-input .address,
+body .form-input .form2,
+body .form-input .form-checkbox {
+  margin: 12px 0px;
+}
+
+@media only screen and (max-width: 1200px) {
+  body .form-input {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  body .form-input {
+    width: 100%;
+  }
+  body .form-input .form2 {
+    display: flex;
+    flex-direction: column;
+  }
+  body .form-input .form2 .city,
+body .form-input .form2 .state,
+body .form-input .form2 .zip {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
