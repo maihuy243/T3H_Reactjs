@@ -14,7 +14,7 @@ body {
     width: 1200px;
     margin: auto;
     header {
-        @include centerbox();
+        text-align: center;
         padding: 30px;
         background-color: #666666;
         color: #fff;
@@ -42,9 +42,10 @@ body {
         }
     }
     footer {
-        @include centerbox();
         padding: 30px;
         background-color: #777777;
         color: #fff;
+        text-align: center;
+
     }
 }
