@@ -18,6 +18,9 @@ header {
             font-size: 24px;
             cursor: pointer;
         }
+        li:hover{
+            background-color: #4caf4f8f;
+        }
         .active {
             background-color: #4caf50;
         }
@@ -53,6 +56,9 @@ header {
                     font-size: 14px;
                     font-weight: 600;
                     cursor: pointer;
+                }
+                li:hover{
+                    background-color: #19232f56;
                 }
                 .active {
                     background-color: #19232f;

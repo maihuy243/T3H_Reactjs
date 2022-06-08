@@ -19,6 +19,9 @@ header ul li {
   font-size: 24px;
   cursor: pointer;
 }
+header ul li:hover {
+  background-color: rgba(76, 175, 79, 0.5607843137);
+}
 header ul .active {
   background-color: #4caf50;
 }
@@ -53,6 +56,9 @@ header ul .active {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+.main-top-category ul li:hover {
+  background-color: rgba(25, 35, 47, 0.337254902);
 }
 .main-top-category ul .active {
   background-color: #19232f;
