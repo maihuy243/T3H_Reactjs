@@ -97,11 +97,14 @@ header ul .active {
 }
 .main-body-form input {
   border: none;
-  border-top: 1px solid rgb(240, 233, 233);
+  border-top: 1px solid rgba(240, 233, 233, 0.89);
   padding: 24px 8px 12px 16px;
   font-size: 16px;
   font-weight: 600;
-  color: rgb(114, 110, 110);
+  color: rgb(153, 149, 149);
+}
+.main-body-form input:focus {
+  box-shadow: 0px 0px 4px;
 }
 
 .btvn {

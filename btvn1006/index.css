@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+footer {
+  background-color: #ebebeb;
+  padding: 20px;
+}
+footer .title {
+  padding-bottom: 5px;
+  font-size: 17px;
+  color: #2e3553;
+  font-weight: 500;
+}
+footer .top-item {
+  padding: 0px 15px;
+}
+footer .top-content {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+footer .top-text {
+  font-size: 14px;
+}
+footer .top-text div + div {
+  margin-top: 5px;
+}
+footer .top .line {
+  border-left: 1px solid black;
+}
+footer .line-footer {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  margin: 20px 0px;
+}
+
+/*# sourceMappingURL=index.css.map */
