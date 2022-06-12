@@ -7,13 +7,14 @@
 
 footer {
   background-color: #ebebeb;
-  padding: 20px;
+  padding: 20px 0px;
 }
 footer .title {
   padding-bottom: 5px;
   font-size: 17px;
   color: #2e3553;
   font-weight: 500;
+  padding: 10px 15px;
 }
 footer .top-item {
   padding: 0px 15px;
@@ -26,6 +27,13 @@ footer .top-content {
 footer .top-text {
   font-size: 14px;
 }
+footer .top-text .tel a {
+  color: #575454;
+  text-decoration: none;
+}
+footer .top-text .tel a:hover {
+  text-decoration: underline;
+}
 footer .top-text div + div {
   margin-top: 5px;
 }
@@ -35,7 +43,105 @@ footer .top .line {
 footer .line-footer {
   border-top: 1px solid #ccc;
   width: 100%;
-  margin: 20px 0px;
+}
+footer .main-item-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+footer .main-item-widget {
+  font-size: 12px;
+  padding: 6px 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+footer .main-item-widget:hover {
+  padding-left: 12px;
+}
+footer .main-item-text input, footer .main-item-text textarea {
+  padding: 4px 0px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: #ebebeb;
+  font-size: 12px;
+  outline: none;
+}
+footer .main-item-text .btnsm {
+  display: inline;
+  background-color: #636060;
+  color: #fff;
+  padding: 6px 15px;
+  font-size: 11px;
+  cursor: pointer;
+}
+footer .main-item-social {
+  margin-bottom: 25px;
+}
+footer .main-item-social-icon {
+  margin: 0 12px 0 0;
+  cursor: pointer;
+}
+footer .main-item-social-zalo {
+  width: 32px;
+  height: 32px;
+  background-color: #0084cb;
+  border-radius: 50%;
+  font-size: 14px;
+}
+footer .main-item-social-zalo a {
+  text-decoration: none;
+  color: #fff;
+}
+footer .main-item-contact {
+  margin-bottom: 25px;
+}
+footer .main-item-contact img {
+  width: 10px;
+  margin-right: 10px;
+}
+footer .main-item-contact a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #575454;
+}
+footer .main-item-contact a:hover {
+  text-decoration: underline;
+}
+footer .main-item-submit img {
+  width: 140px;
+}
+footer .bottom ul {
+  list-style: none;
+}
+footer .bottom ul li {
+  font-size: 12px;
+  font-weight: 400;
+}
+footer .bottom ul li a {
+  text-decoration: none;
+  color: #000;
+}
+footer .bottom ul li a:hover {
+  text-decoration: underline;
+}
+footer .bottom ul li + li::before {
+  content: "";
+  border-left: 1px solid rgb(0, 0, 0);
+  margin: 0px 10px;
+  font-size: 10px;
+  color: #666;
+}
+
+.license {
+  background-color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 16px;
+}
+.license span {
+  color: #a8a8a8;
+  font-weight: 100;
 }
 
 /*# sourceMappingURL=index.css.map */
