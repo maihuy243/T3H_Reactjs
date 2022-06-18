@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+ 
+  height: 100vh;
+}
+.nav {
+  list-style: none;
+  display: flex;
+}
+.nav li{
+  margin: 0px 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: aquamarine;
+}
+
+.nav2 {
+  list-style: none;
+  background-color: rgb(131, 113, 86) ;
+}
+.nav:hover ~ .nav2
+{
+ background-color: aquamarine;
+}
