@@ -1,4 +1,4 @@
-// Ex1
+///// Ex1 
 const mass_Marks = 78;
 const height_Marks = 1.69;
 const mass_John = 92;
@@ -14,6 +14,7 @@ const check =
     : `BMI Marks is ${bmi_Marks} higher less BMI John is ${bmi_John}`;
 console.log(check);
 
+///// Ex2
 // ax + b = c
 const ex2 = (a, b, c) => {
   if (a !== 0 && b !== 0 && c !== 0)
@@ -30,7 +31,9 @@ const ex2 = (a, b, c) => {
     console.log("Phương trình có nghiệm : ", c / a);
 };
 ex2(5, 7, 9);
-//ex3
+
+///// Ex3
+
 const point_Dolphins_1 = 100;
 const point_Dolphins_2 = 100;
 const point_Dolphins_3 = 100;
@@ -58,13 +61,14 @@ if (average_Dolphins >= 100 && average_Koalas >= 100) {
   console.log(check2);
 }
 
-//ex4
+///// Ex4 
 const ex4 = (a, b) => {
   if (a > b) console.log(`${a} là số lớn nhất `);
   else console.log(`${b} là số lớn nhất `);
 };
 ex4(-123, 1);
 
+///// Ex5
 const ex5 = (a, b) => {
   console.log(`${a} + ${b} = ${a + b}`);
   console.log(`${a} - ${b} = ${a - b}`);
@@ -74,6 +78,7 @@ const ex5 = (a, b) => {
 };
 ex5(4, 4);
 
+///// Ex6
 const ex6 = (point, name) => {
   if (9 <= point && point <= 10)
     console.log(`Học sinh ${name} có điểm = ${point} xếp loại S`);
