@@ -14,7 +14,7 @@
 
 // + Data 2: Marry nặng 95 kg và cao 1.88 m. Harry nặng 85 kg và cao 1.76 m
 
-const massMarks = 78;
+const massMarks = 68;
 const heightMarks = 1.69;
 const massJohn = 92;
 const heightJohn = 1.95;
@@ -48,7 +48,7 @@ const giaiptbac1 = (a, b, c) => {
     else console.log("Phương trình vô nghiệm");
   }
 };
-giaiptbac1(5, 7, 9);
+giaiptbac1(4, 9, 1);
 
 // Bài 3:
 
@@ -68,11 +68,11 @@ giaiptbac1(5, 7, 9);
 
 // + Data 1: Dolphins có điểm là 96, 108 và89. Koalas có điểm là 88, 91 và 110
 const pointDolphins1 = 100;
-const pointDolphins2 = 100;
-const pointDolphins3 = 100;
+const pointDolphins2 = 123;
+const pointDolphins3 = 34;
 const pointKoalas1 = 100;
 const pointKoalas2 = 110;
-const pointKoalas3 = 100;
+const pointKoalas3 = 51;
 
 const averageDolphins = (pointDolphins1 + pointDolphins2 + pointDolphins3) / 3;
 const averageKoalas = (pointKoalas1 + pointKoalas2 + pointKoalas3) / 3;
@@ -101,7 +101,7 @@ const sosanh = (a, b) => {
   else if (a < b) console.log(`${b} là số lớn nhất `);
   else console.log("2 số bằng nhau");
 };
-sosanh(1, 1);
+sosanh(5, 8);
 
 // Thực hiện các phép tính số học trên hai số
 
@@ -126,7 +126,7 @@ const operator = (a, b, op) => {
   else if (op === "divide") console.log(`a / b = `, a / b);
   else if (op === "modulus") console.log(`a % b = `, a % b);
 };
-operator(4, 4, "subtract");
+operator(8, 8, "multiply");
 
 // Input: Cho vào tên học sinh, và điểm số của học sinh đó
 
@@ -164,6 +164,6 @@ const xeloaihocsinh = (point, name) => {
   else console.log(`Học sinh ${name} có điểm = ${point} Không được lên lớp`);
 };
 
-xeloaihocsinh(63, "A");
-xeloaihocsinh(91, "B");
-xeloaihocsinh(34, "C");
+xeloaihocsinh(62, "A");
+xeloaihocsinh(76, "G");
+xeloaihocsinh(35, "C");
