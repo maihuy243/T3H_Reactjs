@@ -35,6 +35,7 @@ const users = [
 // Bài 5: Dùng reduce để làm từ bài 1 -> bài 4
 
 //1 lấy first_name và last_name của tất cả người dùng và đặt nó vào một mảng khác = reduce
+//
 const getFirstLastName = users.reduce(
   (a, b) => [a + b.first_name + " " + b.last_name + ","],
   []
@@ -43,7 +44,7 @@ const getFirstLastName = users.reduce(
 // output : ['Eamon Harhoff,Laney Whittam,Lynett Twinberrow,']
 
 //2 Tìm user là male và có tuổi dưới 40 = reduce
-
+//
 const findUser = users.reduce((a, b) => {
   if (b.age < 40 && b.gender == "Male") {
     return [...a, b];
@@ -53,6 +54,7 @@ const findUser = users.reduce((a, b) => {
 // console.log(findUser);
 // output [{...},{...}]
 
+//
 const convertToCamelCase = users.reduce((a, b) => {
   let obj = {};
   Object.keys(b).forEach((key) => {
