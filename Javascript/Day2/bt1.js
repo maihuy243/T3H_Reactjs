@@ -5,7 +5,11 @@ const text = "co oi co check bai giup em nha ";
 
 const searchKeyWord = (string) => {
   let a = 0,
+<<<<<<< HEAD
     e = 1,
+=======
+    e = 0,
+>>>>>>> baitapjs
     I = 0,
     o = 0,
     u = 0;
