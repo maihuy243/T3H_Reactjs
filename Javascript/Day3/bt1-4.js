@@ -84,4 +84,12 @@ const convertToCamelCase = users.map((user) => {
   return obj;
 });
 
-console.log(convertToCamelCase);
+// console.log(convertToCamelCase);
+
+//Sắp xếp theo firstName và Salary
+
+const softbyFirstNameSalary = users.sort(
+  (a, b) => a.salary - b.salary || b.first_name - a.first_name
+);
+
+// console.log("softbyFirstNameSalary :", softbyFirstNameSalary);
