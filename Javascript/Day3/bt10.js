@@ -36,9 +36,7 @@ const articles = [
 const get = document.querySelector.bind(document);
 const gets = document.querySelectorAll.bind(document);
 const render = get("#article");
-
 //button handle
-let isChecked = false;
 
 //render
 const renderData = articles.map((item) => {
@@ -50,24 +48,31 @@ const renderData = articles.map((item) => {
   <div class="name">${item.name}</div>
   <div class="description">
   ${item.description}
-  <button>Read more</button>
   </div>
+  <button>Less More</button>
   </div>
   `);
 });
-
 render.innerHTML = renderData.join("");
 
 //button
-const buttons = gets("button");
+const btns = gets("button");
+const descriptions = gets(".description");
+let isChecked = false;
 
-buttons.forEach((button) => {
-  let changeText = ``;
-  button.onclick = () => {
-    isChecked = !isChecked;
-    console.log("isChecked", isChecked);
-    changeText = isChecked ? "Lessmore" : "Read more";
-
-    button.innerHTML = changeText;
-  };
-});
+const changeText = () => {
+  btns.forEach((btn, index) => {
+    btn.onclick = () => {
+      isChecked = !isChecked;
+      if (isChecked) {
+        btn.innerHTML = "Read More";
+        descriptions[index].innerHTML =
+          articles[index].description.substring(0, 50) + "...";
+      } else {
+        btn.innerHTML = "Less More";
+        descriptions[index].innerHTML = articles[index].description;
+      }
+    };
+  });
+};
+changeText();
