@@ -56,6 +56,7 @@ const renderData = articles.map((item) => {
 render.innerHTML = renderData.join("");
 
 //button
+//oke
 const btns = gets("button");
 const descriptions = gets(".description");
 let isChecked = false;
