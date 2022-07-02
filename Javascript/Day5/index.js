@@ -111,6 +111,7 @@ const quizApp = {
           });
           item.classList.add("active");
           result[index] = item.dataset.value;
+          console.log(result);
         };
       } else {
         item.onclick = function () {
