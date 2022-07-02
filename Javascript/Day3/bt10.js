@@ -40,8 +40,7 @@ const render = get("#article");
 
 //render
 const renderData = articles.map((item) => {
-  let html = ``;
-  return (html += `
+  return (html = `
   <div class="item">
 
   <div class="title">${item.title}</div>
@@ -56,7 +55,6 @@ const renderData = articles.map((item) => {
 render.innerHTML = renderData.join("");
 
 //button
-//oke
 const btns = gets("button");
 const descriptions = gets(".description");
 let isChecked = false;
@@ -65,14 +63,12 @@ const changeText = () => {
   btns.forEach((btn, index) => {
     btn.onclick = () => {
       isChecked = !isChecked;
-      if (isChecked) {
-        btn.innerHTML = "Read More";
-        descriptions[index].innerHTML =
-          articles[index].description.substring(0, 50) + "...";
-      } else {
-        btn.innerHTML = "Less More";
-        descriptions[index].innerHTML = articles[index].description;
-      }
+      isChecked
+        ? ((btn.innerHTML = "Read More"),
+          (descriptions[index].innerHTML =
+            articles[index].description.substring(0, 50) + "..."))
+        : ((btn.innerHTML = "Less More"),
+          (descriptions[index].innerHTML = articles[index].description));
     };
   });
 };
