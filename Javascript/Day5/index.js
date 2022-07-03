@@ -161,7 +161,6 @@ const quizApp = {
     reload.style.display = "block";
   },
 
-  //comment
   //nextQuestion
   nextBtn(index) {
     index =
@@ -171,7 +170,6 @@ const quizApp = {
     this.render(index);
   },
 
-  //comment
   //previous Question
   prevBtn(index) {
     index = index <= 0 ? (this.index = 0) : index;
@@ -180,6 +178,7 @@ const quizApp = {
 
   //app Start
   start() {
+    //always start
     this.render();
   },
 };
