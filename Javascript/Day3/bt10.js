@@ -52,6 +52,10 @@ const renderData = articles.map((item) => {
   </div>
   `);
 });
+<<<<<<< HEAD
+//
+=======
+>>>>>>> master
 render.innerHTML = renderData.join("");
 
 //button

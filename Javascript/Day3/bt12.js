@@ -19,4 +19,9 @@ const displayName = ({ first, last, ...a }) => {
   return `${first} ${last} ${twitter} ${company}`;
 };
 
+<<<<<<< HEAD
+// console.log(displayName(person2));
+//
+=======
 console.log(displayName(person2));
+>>>>>>> master

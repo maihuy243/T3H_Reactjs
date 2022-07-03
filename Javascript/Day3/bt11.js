@@ -6,3 +6,4 @@ const [firstColor, secondColor, ...otherColor] = colors;
 console.log("firstColor :", firstColor);
 console.log("secondColor :", secondColor);
 console.log("otherColor :", otherColor);
+//

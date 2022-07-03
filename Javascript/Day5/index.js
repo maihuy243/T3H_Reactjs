@@ -65,6 +65,7 @@ const result = {};
 const quizApp = {
   index: 0,
 
+  //test
   //render UI
   render(index = 0) {
     const [
@@ -130,7 +131,6 @@ const quizApp = {
   },
 
   //check type disabled btn
-  //
   typeButton(index) {
     if (index === data.length - 1) {
       nextBtn.style.display = "none";
@@ -161,7 +161,6 @@ const quizApp = {
     reload.style.display = "block";
   },
 
-  //comment
   //nextQuestion
   nextBtn(index) {
     index =
@@ -171,7 +170,6 @@ const quizApp = {
     this.render(index);
   },
 
-  //comment
   //previous Question
   prevBtn(index) {
     index = index <= 0 ? (this.index = 0) : index;
@@ -180,6 +178,7 @@ const quizApp = {
 
   //app Start
   start() {
+    //always start
     this.render();
   },
 };

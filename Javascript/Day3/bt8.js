@@ -30,6 +30,7 @@ const characters = [
 ];
 
 // + Lấy mảng gồm tất cả names
+//
 const getNames = characters.reduce(
   (result, current) => [...result, current.name],
   []
@@ -38,6 +39,7 @@ const getNames = characters.reduce(
 // output ['Luke Skywalker', 'Darth Vader', 'Leia Organa', 'Anakin Skywalker']
 
 // + Lấy mảng gồm tất cả height
+//
 const getHeigth = characters.reduce(
   (result, current) => [...result, current.height * 1],
   []
@@ -46,7 +48,7 @@ const getHeigth = characters.reduce(
 // (4) [172, 202, 150, 188]
 
 // + Tìm những người có height nhỏ hơn 100
-
+//
 const userHeighMax100 = characters.filter((user) => user.height < 100);
 // console.log(userHeighMax100);
 

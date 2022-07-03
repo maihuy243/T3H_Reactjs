@@ -29,7 +29,7 @@ const users = [
 ];
 
 // Bài 1: Sử dụng forEach để lấy first_name và last_name của tất cả người dùng và đặt nó vào một mảng khác. Thứ tự trong mảng mới phải cùng thứ tự với người dùng xuất hiện trong mảng người dùng
-
+//
 let arr = [];
 let fullname = "";
 users.forEach((user) => {
@@ -44,12 +44,20 @@ users.forEach((user) => {
 //   'first_name : Laney + last_name : Whittam', ... ]
 
 // Bài 2: Tìm user là male và có tuổi dưới 40
+<<<<<<< HEAD
+//
+const findUsers = users.filter(
+  (user) => user.gender === "Male" && user.age < 40
+);
+// console.log("findUsers", findUsers);
+=======
 
 const findUsers = users.map((user) => {
   if (user.gender === "Male" && user.age < 40) return user;
   return {};
 });
 console.log("findUsers", findUsers);
+>>>>>>> master
 
 // //outpit
 // [ {age: 34
@@ -61,14 +69,14 @@ console.log("findUsers", findUsers);
 // salary: 8029} , .....]
 
 //Bài 3: Làm giống bài 1 nhưng sử dụng map
-
+//
 const newArray = users.map(
   (user) => `first_name :${user.first_name} ,last_name: ${user.last_name}`
 );
 // console.log(newArray);
 
 // output ['first_name :Eamon ,last_name: Harhoff',...]
-
+//
 //Bài 4: Sử dụng map để chuyển đổi key của object thành camelCase
 
 const convertToCamelCase = users.map((user) => {
@@ -90,3 +98,14 @@ const convertToCamelCase = users.map((user) => {
 });
 
 // console.log(convertToCamelCase);
+<<<<<<< HEAD
+
+//Sắp xếp theo firstName và Salary
+
+const softbyFirstNameSalary = users.sort(
+  (a, b) => a.salary - b.salary || b.first_name - a.first_name
+);
+
+// console.log("softbyFirstNameSalary :", softbyFirstNameSalary);
+=======
+>>>>>>> master
