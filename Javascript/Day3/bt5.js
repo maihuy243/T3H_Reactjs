@@ -35,12 +35,20 @@ const users = [
 // Bài 5: Dùng reduce để làm từ bài 1 -> bài 4
 
 //1 lấy first_name và last_name của tất cả người dùng và đặt nó vào một mảng khác = reduce
+<<<<<<< HEAD
 //
 const getFirstLastName = users.reduce(
   (a, b) => [a + b.first_name + " " + b.last_name + ","],
   []
 );
 // console.log(getFirstLastName);
+=======
+const getFirstLastName = users.reduce((a, b) => {
+  const fullname = b.first_name + b.last_name;
+  return [...a, fullname];
+}, []);
+console.log(getFirstLastName);
+>>>>>>> master
 // output : ['Eamon Harhoff,Laney Whittam,Lynett Twinberrow,']
 
 //2 Tìm user là male và có tuổi dưới 40 = reduce

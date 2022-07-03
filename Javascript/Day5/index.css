@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.backgroundApp {
+  background-color: #232946;
+}
+
+.quizApp {
+  background-color: #b8c1ec;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  height: 100vh;
+  box-shadow: 0 0 10px 2px;
+}
+.quizApp .title {
+  text-align: center;
+  line-height: 50px;
+  padding: 40px;
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+.quizApp .questions {
+  background-color: #fff;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  height: 300px;
+}
+.quizApp .questions .question {
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+.quizApp .questions .answers .active {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+.quizApp .questions .answers .form {
+  padding: 8px 20px;
+}
+.quizApp .questions .answers .form .correct {
+  padding: 4px 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+}
+.quizApp .questions .answers .form:hover {
+  background-color: rgb(122, 227, 150);
+}
+.quizApp .viewResult {
+  text-align: center;
+  padding: 40px;
+}
+
+/*# sourceMappingURL=index.css.map */

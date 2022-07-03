@@ -13,8 +13,8 @@ const users = [
     first_name: "Laney",
     last_name: "Whittam",
     email: "lwhittam1@issuu.com",
-    gender: "Female",
-    age: 42,
+    gender: "Male",
+    age: 24,
     salary: 15018,
   },
   {
@@ -33,8 +33,8 @@ const users = [
 let arr = [];
 let fullname = "";
 users.forEach((user) => {
-  fullname = `first_name : ${user.first_name},last_name : ${user.last_name}`;
-  return arr.push(fullname);
+  fullname = `${user.first_name} ${user.last_name}`;
+  arr.push(fullname);
 });
 // console.log(arr);
 
@@ -44,11 +44,20 @@ users.forEach((user) => {
 //   'first_name : Laney + last_name : Whittam', ... ]
 
 // Bài 2: Tìm user là male và có tuổi dưới 40
+<<<<<<< HEAD
 //
 const findUsers = users.filter(
   (user) => user.gender === "Male" && user.age < 40
 );
 // console.log("findUsers", findUsers);
+=======
+
+const findUsers = users.map((user) => {
+  if (user.gender === "Male" && user.age < 40) return user;
+  return {};
+});
+console.log("findUsers", findUsers);
+>>>>>>> master
 
 // //outpit
 // [ {age: 34
@@ -76,7 +85,11 @@ const convertToCamelCase = users.map((user) => {
     if (key.split("_").length >= 2) {
       let newkey = key.split("_");
       newkey = newkey.reduce(
-        (a, b) => a + b.charAt(0).toUpperCase() + b.slice(1)
+        (a, b) =>
+          a[0].toLowerCase() +
+          a.slice(1) +
+          b.charAt(0).toUpperCase() +
+          b.slice(1)
       );
       obj[newkey] = user[key];
     } else obj[key.toLowerCase()] = user[key];
@@ -85,6 +98,7 @@ const convertToCamelCase = users.map((user) => {
 });
 
 // console.log(convertToCamelCase);
+<<<<<<< HEAD
 
 //Sắp xếp theo firstName và Salary
 
@@ -93,3 +107,5 @@ const softbyFirstNameSalary = users.sort(
 );
 
 // console.log("softbyFirstNameSalary :", softbyFirstNameSalary);
+=======
+>>>>>>> master

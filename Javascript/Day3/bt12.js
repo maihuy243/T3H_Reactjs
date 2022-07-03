@@ -14,9 +14,14 @@ person2 = {
   company: "Space X",
 };
 
-const displayName = (user) => {
-  return user.first + user.last;
+const displayName = ({ first, last, ...a }) => {
+  const { twitter, company } = a;
+  return `${first} ${last} ${twitter} ${company}`;
 };
 
+<<<<<<< HEAD
 // console.log(displayName(person2));
 //
+=======
+console.log(displayName(person2));
+>>>>>>> master
