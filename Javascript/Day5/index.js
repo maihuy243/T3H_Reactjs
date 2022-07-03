@@ -130,6 +130,7 @@ const quizApp = {
   },
 
   //check type disabled btn
+  //
   typeButton(index) {
     if (index === data.length - 1) {
       nextBtn.style.display = "none";
@@ -159,6 +160,8 @@ const quizApp = {
       : (bgApp.style.backgroundColor = "red");
     reload.style.display = "block";
   },
+
+  //comment
   //nextQuestion
   nextBtn(index) {
     index =
@@ -168,11 +171,14 @@ const quizApp = {
     this.render(index);
   },
 
+  //comment
   //previous Question
   prevBtn(index) {
     index = index <= 0 ? (this.index = 0) : index;
     this.render(index);
   },
+
+  //app Start
   start() {
     this.render();
   },
