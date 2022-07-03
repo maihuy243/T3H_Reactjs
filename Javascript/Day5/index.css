@@ -5,14 +5,15 @@
 }
 
 .backgroundApp {
-  background-color: rgb(76, 83, 81);
+  background-color: #232946;
 }
 
 .quizApp {
-  background-color: aqua;
+  background-color: #b8c1ec;
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   height: 100vh;
+  box-shadow: 0 0 10px 2px;
 }
 .quizApp .title {
   text-align: center;
@@ -32,7 +33,8 @@
   padding: 0 20px;
 }
 .quizApp .questions .answers .active {
-  background-color: rgba(211, 108, 108, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
 }
 .quizApp .questions .answers .form {
   padding: 8px 20px;
@@ -45,7 +47,7 @@
   text-align: center;
 }
 .quizApp .questions .answers .form:hover {
-  background-color: beige;
+  background-color: rgb(122, 227, 150);
 }
 .quizApp .viewResult {
   text-align: center;

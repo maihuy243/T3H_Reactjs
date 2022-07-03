@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     question: "Javascript is _________ language.",
     answers: {

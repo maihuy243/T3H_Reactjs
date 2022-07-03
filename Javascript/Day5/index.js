@@ -55,6 +55,8 @@ const nextBtn = get(".next");
 const prevBtn = get(".prev");
 const resultBtn = get(".result");
 const viewResult = get(".viewResult");
+const bgApp = get(".quizApp");
+const reload = get(".reload");
 
 const result = {};
 
@@ -104,38 +106,45 @@ const quizApp = {
   handleCheckedItem(index, multi) {
     const listItem = gets(".form");
     listItem.forEach((item) => {
-      if (!multi) {
-        item.onclick = function () {
-          listItem.forEach((item2) => {
-            item2.classList.remove("active");
+      !multi
+        ? (item.onclick = function () {
+            listItem.forEach((item2) => {
+              item2.classList.remove("active");
+            });
+            item.classList.add("active");
+            result[index] = item.dataset.value;
+            console.log(result);
+          })
+        : (item.onclick = function () {
+            let multiAns = "";
+            item.classList.toggle("active");
+            const multiAnswer = gets(".active");
+
+            multiAnswer.forEach((item) => {
+              multiAns += item.getAttribute("data-value");
+            });
+            result[index] = multiAns;
+            console.log(result);
           });
-          item.classList.add("active");
-          result[index] = item.dataset.value;
-          console.log(result);
-        };
-      } else {
-        item.onclick = function () {
-          item.classList.toggle("active");
-          result[index] += item.dataset.value;
-          console.log(result);
-          a;
-        };
-      }
     });
   },
 
+  //check type disabled btn
   typeButton(index) {
-    console.log(index);
     if (index === data.length - 1) {
-      nextBtn.setAttribute("disabled", "");
-      resultBtn.removeAttribute("disabled");
+      nextBtn.style.display = "none";
+      reload.style.display = "none";
+      resultBtn.style.display = "block";
     } else if (index === 0) {
-      prevBtn.setAttribute("disabled", "");
-      resultBtn.setAttribute("disabled", "");
+      reload.style.display = "none";
+
+      prevBtn.style.display = "none";
+      resultBtn.style.display = "none";
     } else {
-      nextBtn.removeAttribute("disabled");
-      prevBtn.removeAttribute("disabled");
-      resultBtn.setAttribute("disabled", "");
+      resultBtn.style.display = "none";
+      reload.style.display = "none";
+      prevBtn.style.display = "block";
+      nextBtn.style.display = "block";
     }
   },
 
@@ -145,6 +154,10 @@ const quizApp = {
       if (result[i] === data[i].correctAnswer) total++;
     }
     viewResult.innerHTML = `Trả lời đúng ${total} / ${data.length}`;
+    total === 4
+      ? (bgApp.style.backgroundColor = "green")
+      : (bgApp.style.backgroundColor = "red");
+    reload.style.display = "block";
   },
   //nextQuestion
   nextBtn(index) {
