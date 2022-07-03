@@ -65,6 +65,7 @@ const result = {};
 const quizApp = {
   index: 0,
 
+  //test
   //render UI
   render(index = 0) {
     const [
@@ -102,6 +103,7 @@ const quizApp = {
     this.handleCheckedItem(index, multi);
   },
 
+  //test
   //checkRadioBtn
   handleCheckedItem(index, multi) {
     const listItem = gets(".form");
@@ -129,6 +131,7 @@ const quizApp = {
     });
   },
 
+  //test
   //check type disabled btn
   typeButton(index) {
     if (index === data.length - 1) {
@@ -160,6 +163,7 @@ const quizApp = {
     reload.style.display = "block";
   },
 
+  //test
   //nextQuestion
   nextBtn(index) {
     index =
@@ -175,6 +179,7 @@ const quizApp = {
     this.render(index);
   },
 
+  //test
   //app Start
   start() {
     this.render();
