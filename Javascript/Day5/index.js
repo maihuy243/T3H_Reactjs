@@ -119,7 +119,6 @@ const quizApp = {
             let multiAns = "";
             item.classList.toggle("active");
             const multiAnswer = gets(".active");
-
             multiAnswer.forEach((item) => {
               multiAns += item.getAttribute("data-value");
             });
