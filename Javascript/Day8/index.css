@@ -28,8 +28,38 @@ body {
 #app .listsUser .tableView .view {
   text-align: center;
 }
+#app .modal-edit {
+  display: none;
+  background-color: #ebcece;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 400px;
+  padding: 20px;
+  z-index: 999;
+  border-radius: 4px;
+  transition: 1s;
+  animation: 0.4s fadeIn ease-in-out forwards;
+  transform: translate(-50%, -50%);
+}
+@keyframes fadeIn {
+  0% {
+    transform: translate(-50%, -30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
 #app .panigation button {
   margin: 0 8px;
+}
+#app .panigation .prev,
+#app .panigation .next {
+  border: none;
 }
 
 /*# sourceMappingURL=index.css.map */

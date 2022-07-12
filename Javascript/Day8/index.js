@@ -8,8 +8,16 @@ const get = document.querySelector.bind(document);
 const gets = document.querySelectorAll.bind(document);
 const panigation = gets(".item");
 const view = get(".view");
-const prevBtn = get(".prev");
 const nextBtn = get(".next");
+const prevBtn = get(".prev");
+const modelEdit = get(".modal-edit");
+const idEdit = get(".idEdit");
+const usernameEdit = get(".usernameEdit");
+const phoneEdit = get(".phoneEdit");
+const emailEdit = get(".emailEdit");
+const addressEdit = get(".addressEdit ");
+
+let crrIndex = 0;
 
 //Call API
 const API = "https://jsonplaceholder.typicode.com/users";
@@ -19,7 +27,7 @@ async function getData() {
   return listsUser;
 }
 
-const renderData = (lists, index = 0) => {
+const renderData = (lists, index) => {
   const newLists = lists.slice(Number(index), Number(index) + 2);
   view.innerHTML = "";
   newLists.map(({ id, username, email, address: { street, city }, phone }) => {
@@ -32,7 +40,7 @@ const renderData = (lists, index = 0) => {
      <td>${phone}</td>
      <td>
         <button class="btn btn-primary" onclick="handleEdit(${id})">Edit</button>
-       <button class="btn btn-warning onclick="handleDel(${id})">Del</button>
+       <button class="btn btn-warning" onclick="handleDel(${id})">Del</button>
       </td>
     </tr>
     `);
@@ -51,7 +59,7 @@ const renderDataSearch = (lists) => {
      <td>${phone}</td>
      <td>
         <button class="btn btn-primary" onclick="handleEdit(${id})">Edit</button>
-       <button class="btn btn-warning onclick="handleDel(${id})">Del</button>
+       <button class="btn btn-warning" onclick="handleDel(${id})">Del</button>
       </td>
     </tr>
     `);
@@ -60,7 +68,10 @@ const renderDataSearch = (lists) => {
 
 //panigation
 const handlePagination = (datas) => {
-  renderData(datas, (newIndex = 0));
+  if (crrIndex === 0) {
+    prevBtn.setAttribute("disabled", "");
+  }
+  renderData(datas, crrIndex);
   panigation.forEach((e) => {
     e.onclick = () => {
       get(".item.active").removeAttribute("disabled");
@@ -78,19 +89,50 @@ const handleSearch = () => {
     getData().then((datas) => handleSearchItem(datas));
   } else getData().then((datas) => handlePagination(datas));
 };
+const nextPage = () => {
+  crrIndex += 2;
+  prevBtn.removeAttribute("disabled");
+  getData().then((datas) => renderData(datas, crrIndex));
+  if (crrIndex > 8) {
+    crrIndex = 8;
+    nextBtn.setAttribute("disabled", "");
+  } else nextBtn.removeAttribute("disabled");
+};
 
+const prevPage = () => {
+  nextBtn.removeAttribute("disabled");
+  crrIndex -= 2;
+  if (crrIndex <= 0) {
+    crrIndex = 0;
+    prevBtn.setAttribute("disabled", "");
+  } else prevBtn.removeAttribute("disabled");
+  getData().then((datas) => renderData(datas, crrIndex));
+};
 //handle Search
 const handleSearchItem = (data) => {
   const dataSearch = get(".searchText").value;
   const keys = get(".keys").value;
-  const newList = [];
-  data.forEach((user) => {
-    user[keys].includes(dataSearch) ? newList.push(user) : user;
-  });
-  console.log(newList);
+  let newList = [];
+  if (keys === "id") {
+    newList = data.filter((user) => user.id === Number(dataSearch));
+  } else {
+    data.forEach((user) => {
+      user[keys].includes(dataSearch) ? newList.push(user) : user;
+    });
+  }
   renderDataSearch(newList);
 };
 
+//edit
+const handleEdit = (id) => {
+  modelEdit.style.display = "block";
+  getData().then((datas) => showUser(datas));
+  function showUser(data) {}
+};
+
+const handleSubmit = () => {
+  modelEdit.style.display = "none";
+};
 //start
 function start() {
   getData().then((datas) => handlePagination(datas));

@@ -64,13 +64,56 @@
           </table>
         </div>
       </div>
+      <div class="modal-edit container-fluid row">
+        <div class="col-lg-12">
+          <label for="">ID</label>
+          <input type="text" class="searchText form-control idEdit" disabled />
+        </div>
+        <div class="col-lg-12">
+          <label for="">User Name :</label>
+          <input
+            type="text"
+            class="searchText form-control usernameEdit"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Address :</label>
+          <input
+            type="text"
+            class="searchText form-control addressEdit"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Email :</label>
+          <input
+            type="text"
+            class="searchText form-control emailEdit"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Phone :</label>
+          <input
+            type="text"
+            class="searchText form-control phoneEdit"
+            required
+          />
+        </div>
+        <button class="btn btn-success mt-3" onclick="handleSubmit()">
+          Submit
+        </button>
+      </div>
       <div class="panigation text-center d-flex justify-content-center mt-5">
-        <button class="btn prev"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="btn prev" onclick="prevPage()">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
         <button class="item active btn" data-item="0" disabled>1</button>
         <button class="item btn" data-item="2">2</button>
         <button class="item btn" data-item="4">3</button>
         <p>...</p>
-        <button class="btn next">
+        <button class="btn next" onclick="nextPage()">
           <i class="fa-solid fa-angle-right"></i>
         </button>
       </div>
