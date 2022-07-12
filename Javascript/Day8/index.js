@@ -83,18 +83,15 @@ const handleSearch = () => {
 const handleSearchItem = (data) => {
   const dataSearch = get(".searchText").value;
   const keys = get(".keys").value;
-  const newList = [];
-  console.log(keys);
-  if (keys == "id") {
-    Number(dataSearch);
-    data.forEach((user) => {
-      user[keys].includes(dataSearch) ? newList.push(user) : user;
-    });
+  let newList = [];
+  if (keys === "id") {
+    newList = data.filter((user) => user.id === Number(dataSearch));
   } else {
     data.forEach((user) => {
       user[keys].includes(dataSearch) ? newList.push(user) : user;
     });
   }
+  console.log(newList);
   renderDataSearch(newList);
 };
 
