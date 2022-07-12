@@ -91,9 +91,16 @@ const handleSearchItem = (data) => {
       user[keys].includes(dataSearch) ? newList.push(user) : user;
     });
   }
-  console.log(newList);
   renderDataSearch(newList);
 };
+
+//Next-Prev
+prevBtn.onclick(() => {
+  console.log("prev");
+});
+nextBtn.onclick(() => {
+  console.log("next");
+});
 
 //start
 function start() {
