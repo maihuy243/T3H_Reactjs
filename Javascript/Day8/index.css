@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: #d2e0dd;
+  height: 100vh;
+}
+
+#app {
+  height: 100vh;
+  background-color: #e1efec;
+  border-radius: 20px;
+}
+#app .title {
+  margin: 20px 0px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+}
+#app .listsUser .tableView {
+  height: 300px;
+  overflow-y: scroll;
+}
+#app .listsUser .tableView .view {
+  text-align: center;
+}
+#app .panigation button {
+  margin: 0 8px;
+}
+
+/*# sourceMappingURL=index.css.map */
