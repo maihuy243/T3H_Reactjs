@@ -18,11 +18,11 @@ body {
 }
 
 .image img {
-  transition: all 0.2s
+  transition: all 0.4s
 }
 
-.card:hover .image img {
-  transform: scale(1.6)
+.card:hover  .image img {
+  transform: scale(1.1)
 }
 
 .bg-logo {
@@ -30,6 +30,9 @@ body {
   width: 140px;
   border-radius: 999px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .bg-logo .logo{
   border-radius: 999px
