@@ -11,6 +11,17 @@ const view = get(".view");
 const nextBtn = get(".next");
 const prevBtn = get(".prev");
 const modelEdit = get(".modal-edit");
+const modelAdd = get(".modal-add");
+const btnAdd = get(".submitAdd");
+
+//value Add
+const idAdd = get(".idAdd");
+const usernameAdd = get(".usernameAdd");
+const phoneAdd = get(".phoneAdd");
+const emailAdd = get(".emailAdd");
+const addressAdd = get(".addressAdd ");
+
+//value Edit
 const idEdit = get(".idEdit");
 const usernameEdit = get(".usernameEdit");
 const phoneEdit = get(".phoneEdit");
@@ -84,11 +95,60 @@ const handlePagination = (datas) => {
   });
 };
 
+//Add
+
+const handleAddUser = () => {
+  modelAdd.style.display = "block";
+  const id = idAdd.value;
+  const username = usernameAdd.value;
+  const email = emailAdd.value;
+  const address = addressAdd.value;
+  const phone = phoneAdd.value;
+  const userAdd = {
+    id: id,
+    username: username,
+    email: email,
+    address: {
+      city: address,
+    },
+    phone: phone,
+  };
+  handleSubmitAdd(userAdd);
+};
+
+const handleSubmitAdd = (user) => {
+  btnAdd.onclick = () => {
+    modelAdd.style.display = "none";
+    console.log(user);
+  };
+};
+
+//Search
 const handleSearch = () => {
+  console.log(get(".searchText").value);
+  console.log(get(".keys").value);
+
   if (get(".searchText").value && get(".keys").value) {
     getData().then((datas) => handleSearchItem(datas));
   } else getData().then((datas) => handlePagination(datas));
 };
+
+//handle Search
+const handleSearchItem = (data) => {
+  // const dataSearch = get(".searchText").value;
+  // const keys = get(".keys").value;
+  // console.log(dataSearch, keys);
+  let newList = [];
+  if (keys === "id") {
+    newList = data.filter((user) => user.id === Number(dataSearch));
+  } else {
+    data.forEach((user) => {
+      user[keys].includes(dataSearch) ? newList.push(user) : user;
+    });
+  }
+  renderDataSearch(newList);
+};
+//btn
 const nextPage = () => {
   crrIndex += 2;
   prevBtn.removeAttribute("disabled");
@@ -108,29 +168,45 @@ const prevPage = () => {
   } else prevBtn.removeAttribute("disabled");
   getData().then((datas) => renderData(datas, crrIndex));
 };
-//handle Search
-const handleSearchItem = (data) => {
-  const dataSearch = get(".searchText").value;
-  const keys = get(".keys").value;
-  let newList = [];
-  if (keys === "id") {
-    newList = data.filter((user) => user.id === Number(dataSearch));
-  } else {
-    data.forEach((user) => {
-      user[keys].includes(dataSearch) ? newList.push(user) : user;
-    });
-  }
-  renderDataSearch(newList);
-};
 
 //edit
 const handleEdit = (id) => {
   modelEdit.style.display = "block";
-  getData().then((datas) => showUser(datas));
-  function showUser(data) {}
+  getData().then((datas) => showModelAddUser(datas, id));
 };
 
+const showModelAddUser = (datas, idUser) => {
+  const currUser = [...datas].filter((user) => user.id === idUser);
+  const [
+    {
+      id,
+      username,
+      email,
+      address: { street, city },
+      phone,
+    },
+  ] = currUser;
+  idEdit.value = id;
+  usernameEdit.value = username;
+  emailEdit.value = email;
+  addressEdit.value = street + city;
+  phoneEdit.value = phone;
+};
+
+//send user to api
 const handleSubmit = () => {
+  const valueUsername = usernameEdit.value;
+  const valueEmail = emailEdit.value;
+  const valueStreet = addressEdit.value;
+  const valuePhone = phoneEdit.value;
+  const userEdit = {
+    username: valueUsername,
+    email: valueEmail,
+    address: {
+      street: valueStreet,
+    },
+    phone: valuePhone,
+  };
   modelEdit.style.display = "none";
 };
 //start

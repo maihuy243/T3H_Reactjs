@@ -18,6 +18,7 @@ body {
     font-weight: 700;
     font-size: 30px;
   }
+
   .listsUser {
     .tableView {
       height: 300px;
@@ -27,20 +28,21 @@ body {
       }
     }
   }
-  .modal-edit {
+  .modal-edit,
+  .modal-add {
     display: none;
     background-color: #ebcece;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1000px;
+    transform: translate(-50%, -50%);
+    width: 800px;
     height: 400px;
     padding: 20px;
     z-index: 999;
     border-radius: 4px;
     transition: 1s;
     animation: 0.4s fadeIn ease-in-out forwards;
-    transform: translate(-50%, -50%);
   }
   @keyframes fadeIn {
     0% {

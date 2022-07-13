@@ -23,7 +23,62 @@
     <div id="app" class="container">
       <div class="title">Adminstrator</div>
       <div class="add text-center mb-4">
-        <button class="btn btn-success">Add User</button>
+        <button class="btn btn-success" onclick="handleAddUser()">
+          Add User
+        </button>
+      </div>
+      <div class="modal-add container-fluid row">
+        <title>Add user</title>
+        <div class="col-lg-12">
+          <label for="">ID</label>
+          <input
+            type="text"
+            class="searchText form-control idAdd"
+            onchange="handleAddUser()"
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">User Name :</label>
+          <input
+            type="text"
+            class="searchText form-control usernameAdd"
+            onchange="handleAddUser()"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Address :</label>
+          <input
+            type="text"
+            class="searchText form-control addressAdd"
+            onchange="handleAddUser()"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Email :</label>
+          <input
+            type="text"
+            class="searchText form-control emailAdd"
+            onchange="handleAddUser()"
+            required
+          />
+        </div>
+        <div class="col-lg-12">
+          <label for="">Phone :</label>
+          <input
+            type="text"
+            class="searchText form-control phoneAdd"
+            onchange="handleAddUser()"
+            required
+          />
+        </div>
+        <button
+          class="btn btn-success mt-3 submitAdd"
+          onclick="handleSubmitAdd()"
+        >
+          Submit
+        </button>
       </div>
       <div class="control row">
         <div class="col-lg-6">
@@ -65,6 +120,7 @@
         </div>
       </div>
       <div class="modal-edit container-fluid row">
+        <title>Edit user</title>
         <div class="col-lg-12">
           <label for="">ID</label>
           <input type="text" class="searchText form-control idEdit" disabled />
