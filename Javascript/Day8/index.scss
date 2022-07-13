@@ -5,26 +5,39 @@
 }
 body {
   font-family: "IBM Plex Sans", sans-serif;
-  background-color: #d2e0dd;
+  background-color: #000000;
   height: 100vh;
 }
 #app {
   height: 100vh;
-  background-color: #e1efec;
+  background-color: #ffffff;
   border-radius: 20px;
+  box-shadow: 0 0 15px 2px;
   .title {
-    margin: 20px 0px;
-    text-align: center;
     font-weight: 700;
     font-size: 30px;
   }
 
   .listsUser {
     .tableView {
-      height: 300px;
+      height: 400px;
       overflow-y: scroll;
       .view {
         text-align: center;
+        .item {
+          cursor: pointer;
+          transition: 0.2s;
+        }
+        .item:hover {
+          background-color: rgb(89, 203, 248);
+          color: rgb(0, 0, 0);
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #d62929;
       }
     }
   }

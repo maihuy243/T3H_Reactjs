@@ -13,6 +13,7 @@ const prevBtn = get(".prev");
 const modelEdit = get(".modal-edit");
 const modelAdd = get(".modal-add");
 const btnAdd = get(".submitAdd");
+const btnUpdate = get(".updateUser");
 
 //value Add
 const idAdd = get(".idAdd");
@@ -31,7 +32,7 @@ const addressEdit = get(".addressEdit ");
 let crrIndex = 0;
 
 //Call API
-const API = "https://jsonplaceholder.typicode.com/users";
+const API = "http://localhost:3000/user";
 async function getData() {
   const response = await fetch(API);
   const listsUser = await response.json();
@@ -41,17 +42,19 @@ async function getData() {
 const renderData = (lists, index) => {
   const newLists = lists.slice(Number(index), Number(index) + 2);
   view.innerHTML = "";
-  newLists.map(({ id, username, email, address: { street, city }, phone }) => {
+  newLists.map(({ id, username, email, address: { street }, phone }) => {
     return (view.innerHTML += `
-    <tr>
+    <tr class="item">
       <td>${id}</td>
       <td>${username}</td>
       <td>${email}</td>
-      <td>${street} ${city}</td>
+      <td>${street} </td>
      <td>${phone}</td>
      <td>
         <button class="btn btn-primary" onclick="handleEdit(${id})">Edit</button>
        <button class="btn btn-warning" onclick="handleDel(${id})">Del</button>
+       <button class="btn btn-success" onclick="handlePrice(${id})">Buy</button>
+
       </td>
     </tr>
     `);
@@ -60,17 +63,18 @@ const renderData = (lists, index) => {
 
 const renderDataSearch = (lists) => {
   view.innerHTML = "";
-  lists.map(({ id, username, email, address: { street, city }, phone }) => {
+  lists.map(({ id, username, email, address: { street }, phone }) => {
     return (view.innerHTML += `
-    <tr>
+    <tr class="item">
       <td>${id}</td>
       <td>${username}</td>
       <td>${email}</td>
-      <td>${street} ${city}</td>
+      <td>${street} </td>
      <td>${phone}</td>
      <td>
-        <button class="btn btn-primary" onclick="handleEdit(${id})">Edit</button>
+       <button class="btn btn-primary" onclick="handleEdit(${id})">Edit</button>
        <button class="btn btn-warning" onclick="handleDel(${id})">Del</button>
+       <button class="btn btn-success" onclick="handlePrice(${id})">Buy</button>
       </td>
     </tr>
     `);
@@ -95,39 +99,8 @@ const handlePagination = (datas) => {
   });
 };
 
-//Add
-
-const handleAddUser = () => {
-  modelAdd.style.display = "block";
-  const id = idAdd.value;
-  const username = usernameAdd.value;
-  const email = emailAdd.value;
-  const address = addressAdd.value;
-  const phone = phoneAdd.value;
-  const userAdd = {
-    id: id,
-    username: username,
-    email: email,
-    address: {
-      city: address,
-    },
-    phone: phone,
-  };
-  handleSubmitAdd(userAdd);
-};
-
-const handleSubmitAdd = (user) => {
-  btnAdd.onclick = () => {
-    modelAdd.style.display = "none";
-    console.log(user);
-  };
-};
-
 //Search
 const handleSearch = () => {
-  console.log(get(".searchText").value);
-  console.log(get(".keys").value);
-
   if (get(".searchText").value && get(".keys").value) {
     getData().then((datas) => handleSearchItem(datas));
   } else getData().then((datas) => handlePagination(datas));
@@ -135,9 +108,8 @@ const handleSearch = () => {
 
 //handle Search
 const handleSearchItem = (data) => {
-  // const dataSearch = get(".searchText").value;
-  // const keys = get(".keys").value;
-  // console.log(dataSearch, keys);
+  const dataSearch = get(".searchText").value;
+  const keys = get(".keys").value;
   let newList = [];
   if (keys === "id") {
     newList = data.filter((user) => user.id === Number(dataSearch));
@@ -148,13 +120,14 @@ const handleSearchItem = (data) => {
   }
   renderDataSearch(newList);
 };
+
 //btn
 const nextPage = () => {
   crrIndex += 2;
   prevBtn.removeAttribute("disabled");
   getData().then((datas) => renderData(datas, crrIndex));
-  if (crrIndex > 8) {
-    crrIndex = 8;
+  if (crrIndex > 16) {
+    crrIndex = 16;
     nextBtn.setAttribute("disabled", "");
   } else nextBtn.removeAttribute("disabled");
 };
@@ -169,44 +142,112 @@ const prevPage = () => {
   getData().then((datas) => renderData(datas, crrIndex));
 };
 
-//edit
-const handleEdit = (id) => {
-  modelEdit.style.display = "block";
-  getData().then((datas) => showModelAddUser(datas, id));
+//Add
+
+const handleAddUser = () => {
+  modelAdd.style.display = "block";
+  const id = idAdd.value;
+  const username = usernameAdd.value;
+  const email = emailAdd.value;
+  const address = addressAdd.value;
+  const phone = phoneAdd.value;
+
+  const userAdd = {
+    id: id,
+    username: username,
+    email: email,
+    address: {
+      street: address,
+    },
+    phone: phone,
+  };
+  btnAdd.onclick = () => {
+    modelAdd.style.display = "none";
+    createUser(
+      userAdd,
+      getData().then((datas) => handlePagination(datas))
+    );
+  };
 };
 
-const showModelAddUser = (datas, idUser) => {
+const createUser = (user, callback) => {
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+  fetch(API, option)
+    .then((res) => res.json())
+    .then(callback)
+    .catch(() => alert("Trùng ID rồi nhé"));
+};
+
+// edit user
+const handleEdit = (id) => {
+  modelEdit.style.display = "block";
+  getData().then((datas) => showModelEditUser(datas, id));
+};
+
+//show infor user
+const showModelEditUser = (datas, idUser) => {
   const currUser = [...datas].filter((user) => user.id === idUser);
   const [
     {
       id,
       username,
       email,
-      address: { street, city },
+      address: { street },
       phone,
     },
   ] = currUser;
   idEdit.value = id;
   usernameEdit.value = username;
   emailEdit.value = email;
-  addressEdit.value = street + city;
+  addressEdit.value = street;
   phoneEdit.value = phone;
+
+  // btnUpdate.onclick = () => {
+  //   modelEdit.style.display = "none";
+  //   console.log(updateUser);
+  // };
 };
 
-//send user to api
-const handleSubmit = () => {
-  const valueUsername = usernameEdit.value;
-  const valueEmail = emailEdit.value;
-  const valueStreet = addressEdit.value;
-  const valuePhone = phoneEdit.value;
-  const userEdit = {
-    username: valueUsername,
-    email: valueEmail,
-    address: {
-      street: valueStreet,
+// const handleSubmit = () => {
+//   const valueUsername = usernameEdit.value;
+//   const valueEmail = emailEdit.value;
+//   const valueStreet = addressEdit.value;
+//   const valuePhone = phoneEdit.value;
+//   const userEdit = {
+//     username: valueUsername,
+//     email: valueEmail,
+//     address: {
+//       street: valueStreet,
+//     },
+//     phone: valuePhone,
+//   };
+
+// };
+
+const updateUser = (user, callback) => {
+  console.log(user);
+  const option = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
     },
-    phone: valuePhone,
+    body: JSON.stringify(user),
   };
+  fetch(API, option)
+    .then((res) => res.json())
+    .then(callback)
+    .catch(() => alert("Trùng ID rồi nhé"));
+};
+
+//close
+const closeModal = () => {
+  modelAdd.style.display = "none";
   modelEdit.style.display = "none";
 };
 //start

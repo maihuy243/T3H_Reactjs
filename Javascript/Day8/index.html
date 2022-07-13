@@ -21,19 +21,15 @@
   </head>
   <body>
     <div id="app" class="container">
-      <div class="title">Adminstrator</div>
-      <div class="add text-center mb-4">
-        <button class="btn btn-success" onclick="handleAddUser()">
-          Add User
-        </button>
-      </div>
+      <div class="title mb-2 pt-5 text-center">Adminstrator</div>
+
       <div class="modal-add container-fluid row">
         <title>Add user</title>
         <div class="col-lg-12">
           <label for="">ID</label>
           <input
             type="text"
-            class="searchText form-control idAdd"
+            class="form-control idAdd"
             onchange="handleAddUser()"
           />
         </div>
@@ -41,7 +37,7 @@
           <label for="">User Name :</label>
           <input
             type="text"
-            class="searchText form-control usernameAdd"
+            class="form-control usernameAdd"
             onchange="handleAddUser()"
             required
           />
@@ -50,7 +46,7 @@
           <label for="">Address :</label>
           <input
             type="text"
-            class="searchText form-control addressAdd"
+            class="form-control addressAdd"
             onchange="handleAddUser()"
             required
           />
@@ -59,7 +55,7 @@
           <label for="">Email :</label>
           <input
             type="text"
-            class="searchText form-control emailAdd"
+            class="form-control emailAdd"
             onchange="handleAddUser()"
             required
           />
@@ -68,17 +64,23 @@
           <label for="">Phone :</label>
           <input
             type="text"
-            class="searchText form-control phoneAdd"
+            class="form-control phoneAdd"
             onchange="handleAddUser()"
             required
           />
         </div>
-        <button
-          class="btn btn-success mt-3 submitAdd"
-          onclick="handleSubmitAdd()"
-        >
-          Submit
-        </button>
+
+        <div class="row d-flex justify-content-around">
+          <button
+            class="btn btn-success mt-3 col-lg-4 submitAdd"
+            onclick="handleSubmitAdd()"
+          >
+            Submit
+          </button>
+          <button class="btn btn-danger mt-3 col-lg-4" onclick="closeModal()">
+            Close
+          </button>
+        </div>
       </div>
       <div class="control row">
         <div class="col-lg-6">
@@ -90,7 +92,7 @@
           />
         </div>
         <div class="col-lg-4">
-          <label for="">Fill</label>
+          <label for="">Find By : </label>
           <select class="form-select keys" onchange="handleSearch()">
             <option value="" selected>Select Item</option>
             <option value="id">ID</option>
@@ -100,11 +102,18 @@
         </div>
         <div class="col-lg-2">
           <label for="">Price : </label>
-          <input type="text" class="searchText form-control" disabled />
+          <input type="text" class="price form-control" disabled />
         </div>
       </div>
       <div class="listsUser">
-        <div class="title title2">List User</div>
+        <div class="row">
+          <div class="title m-3">List User</div>
+          <div class="add text-center mb-4">
+            <button class="btn btn-success" onclick="handleAddUser()">
+              Add User
+            </button>
+          </div>
+        </div>
         <div class="tableView">
           <table class="table">
             <thead class="table-success text-center m-0 p0">
@@ -123,13 +132,13 @@
         <title>Edit user</title>
         <div class="col-lg-12">
           <label for="">ID</label>
-          <input type="text" class="searchText form-control idEdit" disabled />
+          <input type="text" class="idAdd form-control idEdit" disabled />
         </div>
         <div class="col-lg-12">
           <label for="">User Name :</label>
           <input
             type="text"
-            class="searchText form-control usernameEdit"
+            class="usernameAdd form-control usernameEdit"
             required
           />
         </div>
@@ -137,29 +146,26 @@
           <label for="">Address :</label>
           <input
             type="text"
-            class="searchText form-control addressEdit"
+            class="addressAdd form-control addressEdit"
             required
           />
         </div>
         <div class="col-lg-12">
           <label for="">Email :</label>
-          <input
-            type="text"
-            class="searchText form-control emailEdit"
-            required
-          />
+          <input type="text" class="emailAdd form-control emailEdit" required />
         </div>
         <div class="col-lg-12">
           <label for="">Phone :</label>
-          <input
-            type="text"
-            class="searchText form-control phoneEdit"
-            required
-          />
+          <input type="text" class="phoneAdd form-control phoneEdit" required />
         </div>
-        <button class="btn btn-success mt-3" onclick="handleSubmit()">
-          Submit
-        </button>
+        <div class="row d-flex justify-content-around">
+          <button class="btn btn-success mt-3 col-lg-4 updateUser" onclick="updateUser()">
+            Update User
+          </button>
+          <button class="btn btn-danger mt-3 col-lg-4" onclick="closeModal()">
+            Close
+          </button>
+        </div>
       </div>
       <div class="panigation text-center d-flex justify-content-center mt-5">
         <button class="btn prev" onclick="prevPage()">
