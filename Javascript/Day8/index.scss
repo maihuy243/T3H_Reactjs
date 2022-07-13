@@ -9,6 +9,7 @@ body {
   height: 100vh;
 }
 #app {
+  position: relative;
   height: 100vh;
   background-color: #ffffff;
   border-radius: 20px;
@@ -17,7 +18,38 @@ body {
     font-weight: 700;
     font-size: 30px;
   }
-
+  .loadingParent {
+    position: relative;
+  }
+  .loading {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(-25%, -25%);
+  }
+  .loading:before {
+    display: block;
+    height: 5px;
+    width: 5px;
+    content: "";
+    animation: spin 1s infinite;
+    border-radius: 100%;
+    box-shadow: 8px 0 0 2px rgb(197, 206, 197), 0 8px 0 2px rgb(218, 184, 184),
+      0 -8px 0 2px rgb(233, 203, 203), -8px 0 0 2px rgb(144, 148, 144);
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .price {
+    font-weight: bold;
+    color: #d62929;
+  }
   .listsUser {
     .tableView {
       height: 400px;
@@ -70,6 +102,10 @@ body {
   }
 
   .panigation {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
     button {
       margin: 0 8px;
     }

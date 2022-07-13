@@ -85,11 +85,14 @@
       <div class="control row">
         <div class="col-lg-6">
           <label for="">Search</label>
-          <input
-            type="text"
-            class="searchText form-control"
-            oninput="handleSearch()"
-          />
+          <div class="loadingParent">
+            <input
+              type="text"
+              class="searchText form-control"
+              oninput="handleSearch()"
+            />
+            <div class="loading"></div>
+          </div>
         </div>
         <div class="col-lg-4">
           <label for="">Find By : </label>
@@ -102,13 +105,16 @@
         </div>
         <div class="col-lg-2">
           <label for="">Price : </label>
-          <input type="text" class="price form-control" disabled />
+          <input type="text" class="price form-control" value="0 $" disabled />
         </div>
       </div>
       <div class="listsUser">
         <div class="row">
           <div class="title m-3">List User</div>
-          <div class="add text-center mb-4">
+          <div class="mb-4">
+            <button class="btn btn-success" onclick="handleSortID()">
+              Sort ID
+            </button>
             <button class="btn btn-success" onclick="handleAddUser()">
               Add User
             </button>
@@ -159,7 +165,10 @@
           <input type="text" class="phoneAdd form-control phoneEdit" required />
         </div>
         <div class="row d-flex justify-content-around">
-          <button class="btn btn-success mt-3 col-lg-4 updateUser" onclick="updateUser()">
+          <button
+            class="btn btn-success mt-3 col-lg-4 updateUser"
+            onclick="updateUser()"
+          >
             Update User
           </button>
           <button class="btn btn-danger mt-3 col-lg-4" onclick="closeModal()">

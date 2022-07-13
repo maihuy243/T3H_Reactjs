@@ -14,6 +14,7 @@ const modelEdit = get(".modal-edit");
 const modelAdd = get(".modal-add");
 const btnAdd = get(".submitAdd");
 const btnUpdate = get(".updateUser");
+const loading = get(".loading");
 
 //value Add
 const idAdd = get(".idAdd");
@@ -30,6 +31,7 @@ const emailEdit = get(".emailEdit");
 const addressEdit = get(".addressEdit ");
 
 let crrIndex = 0;
+let isSorting = false; // default unsorting
 
 //Call API
 const API = "http://localhost:3000/user";
@@ -39,7 +41,7 @@ async function getData() {
   return listsUser;
 }
 
-const renderData = (lists, index) => {
+const renderData = (lists, index = 0) => {
   const newLists = lists.slice(Number(index), Number(index) + 2);
   view.innerHTML = "";
   newLists.map(({ id, username, email, address: { street }, phone }) => {
@@ -99,7 +101,7 @@ const handlePagination = (datas) => {
   });
 };
 
-//Search
+//Search ------------------------------------------------------------------
 const handleSearch = () => {
   if (get(".searchText").value && get(".keys").value) {
     getData().then((datas) => handleSearchItem(datas));
@@ -118,7 +120,12 @@ const handleSearchItem = (data) => {
       user[keys].includes(dataSearch) ? newList.push(user) : user;
     });
   }
-  renderDataSearch(newList);
+  loading.style.display = "block";
+
+  setTimeout(() => {
+    renderDataSearch(newList);
+    loading.style.display = "none";
+  }, 2000);
 };
 
 //btn
@@ -142,11 +149,11 @@ const prevPage = () => {
   getData().then((datas) => renderData(datas, crrIndex));
 };
 
-//Add
+//Add --------------------------------------------------------------------------
 
 const handleAddUser = () => {
   modelAdd.style.display = "block";
-  const id = idAdd.value;
+  const id = Number(idAdd.value);
   const username = usernameAdd.value;
   const email = emailAdd.value;
   const address = addressAdd.value;
@@ -165,7 +172,7 @@ const handleAddUser = () => {
     modelAdd.style.display = "none";
     createUser(
       userAdd,
-      getData().then((datas) => handlePagination(datas))
+      getData().then((datas) => renderData(datas))
     );
   };
 };
@@ -184,13 +191,13 @@ const createUser = (user, callback) => {
     .catch(() => alert("Trùng ID rồi nhé"));
 };
 
-// edit user
+// edit user -----------------------------------------------------------
 const handleEdit = (id) => {
   modelEdit.style.display = "block";
   getData().then((datas) => showModelEditUser(datas, id));
 };
 
-//show infor user
+//show infor user when edit
 const showModelEditUser = (datas, idUser) => {
   const currUser = [...datas].filter((user) => user.id === idUser);
   const [
@@ -208,30 +215,35 @@ const showModelEditUser = (datas, idUser) => {
   addressEdit.value = street;
   phoneEdit.value = phone;
 
-  // btnUpdate.onclick = () => {
-  //   modelEdit.style.display = "none";
-  //   console.log(updateUser);
-  // };
+  btnUpdate.onclick = () => {
+    handleSubmitUpdate();
+    modelEdit.style.display = "none";
+  };
 };
 
-// const handleSubmit = () => {
-//   const valueUsername = usernameEdit.value;
-//   const valueEmail = emailEdit.value;
-//   const valueStreet = addressEdit.value;
-//   const valuePhone = phoneEdit.value;
-//   const userEdit = {
-//     username: valueUsername,
-//     email: valueEmail,
-//     address: {
-//       street: valueStreet,
-//     },
-//     phone: valuePhone,
-//   };
+const handleSubmitUpdate = () => {
+  const valueId = idEdit.value;
+  const valueUsername = usernameEdit.value;
+  const valueEmail = emailEdit.value;
+  const valueStreet = addressEdit.value;
+  const valuePhone = phoneEdit.value;
 
-// };
+  const userEdit = {
+    id: valueId,
+    username: valueUsername,
+    email: valueEmail,
+    address: {
+      street: valueStreet,
+    },
+    phone: valuePhone,
+  };
+  updateUser(
+    userEdit,
+    getData().then((datas) => renderData(datas))
+  );
+};
 
 const updateUser = (user, callback) => {
-  console.log(user);
   const option = {
     method: "PATCH",
     headers: {
@@ -239,12 +251,38 @@ const updateUser = (user, callback) => {
     },
     body: JSON.stringify(user),
   };
-  fetch(API, option)
+  fetch(API + `/${user.id}`, option)
     .then((res) => res.json())
     .then(callback)
-    .catch(() => alert("Trùng ID rồi nhé"));
+    .catch(() => alert("ERROR"));
 };
 
+//del User --------------------------------
+
+const handleDel = (id) => {
+  option = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  fetch(API + `/${id}`, option)
+    .then((res) => res.json())
+    .then((data) => renderData(data));
+};
+
+//sort user ------------------------------------
+const handleSortID = () => {
+  isSorting = !isSorting;
+  getData().then((datas) => sorttingID(datas));
+};
+
+const sorttingID = (datas) => {
+  datas.sort((a, b) => {
+    return isSorting ? a.id - b.id : b.id - a.id ? -1 : 1;
+  });
+  renderData(datas);
+};
 //close
 const closeModal = () => {
   modelAdd.style.display = "none";
