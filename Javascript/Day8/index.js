@@ -31,7 +31,7 @@ const emailEdit = get(".emailEdit");
 const addressEdit = get(".addressEdit ");
 
 let crrIndex = 0;
-let isSorting = false; // default unsorting
+let isSorting = true; // default sorting
 
 //Call API
 const API = "http://localhost:3000/user";
@@ -169,11 +169,15 @@ const handleAddUser = () => {
     phone: phone,
   };
   btnAdd.onclick = () => {
-    modelAdd.style.display = "none";
-    createUser(
-      userAdd,
-      getData().then((datas) => renderData(datas))
-    );
+    if (id && username && email && address && phone) {
+      modelAdd.style.display = "none";
+      createUser(
+        userAdd,
+        getData().then((datas) => {
+          return renderData(datas);
+        })
+      );
+    } else alert("Vui lòng điền đày đủ thông tin ");
   };
 };
 
@@ -278,8 +282,10 @@ const handleSortID = () => {
 };
 
 const sorttingID = (datas) => {
+  console.log(isSorting);
+
   datas.sort((a, b) => {
-    return isSorting ? a.id - b.id : b.id - a.id ? -1 : 1;
+    return isSorting ? a.id - b.id : b.id - a.id;
   });
   renderData(datas);
 };
